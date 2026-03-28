@@ -1038,6 +1038,29 @@ document.addEventListener("touchend", function (e) {
     document.documentElement.style.overflow = "";
   }
 });
+
+    let touchStartY = 0;
+let touchEndY = 0;
+
+document.addEventListener("touchstart", function (e) {
+  touchStartY = e.changedTouches[0].screenY;
+});
+
+document.addEventListener("touchend", function (e) {
+  touchEndY = e.changedTouches[0].screenY;
+
+  const menu = document.getElementById("menu");
+  const toggle = document.querySelector(".menu-toggle");
+
+  // swipe nahoru (min 50px)
+  if (touchStartY - touchEndY > 50 && menu.classList.contains("active")) {
+    menu.classList.remove("active");
+    toggle.classList.remove("active");
+
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+});
 </script>
 
 <footer class="footer">
