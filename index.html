@@ -943,11 +943,12 @@ nav .logo {
   menu.classList.toggle("active");
   toggle.classList.toggle("active");
 
-  // 🔒 blokace scrollu
   if (menu.classList.contains("active")) {
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
   }
 }
 
