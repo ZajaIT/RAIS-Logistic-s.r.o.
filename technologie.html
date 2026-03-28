@@ -1288,6 +1288,92 @@ buttons.forEach(button => {
     }
   });
 });
+
+  // === klik mimo menu ===
+document.addEventListener("click", function (e) {
+  const menu = document.getElementById("menu");
+  const toggle = document.querySelector(".menu-toggle");
+
+  const isClickInsideMenu = menu.contains(e.target);
+  const isClickOnToggle = toggle.contains(e.target);
+
+  if (!isClickInsideMenu && !isClickOnToggle && menu.classList.contains("active")) {
+    menu.classList.remove("active");
+    toggle.classList.remove("active");
+
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+});
+
+// === swipe doprava ===
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", function (e) {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", function (e) {
+  touchEndX = e.changedTouches[0].screenX;
+
+  const menu = document.getElementById("menu");
+  const toggle = document.querySelector(".menu-toggle");
+
+  if (touchEndX - touchStartX > 50 && menu.classList.contains("active")) {
+    menu.classList.remove("active");
+    toggle.classList.remove("active");
+
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+});
+
+// === swipe nahoru ===
+let touchStartY = 0;
+let touchEndY = 0;
+
+document.addEventListener("touchstart", function (e) {
+  touchStartY = e.changedTouches[0].screenY;
+});
+
+document.addEventListener("touchend", function (e) {
+  touchEndY = e.changedTouches[0].screenY;
+
+  const menu = document.getElementById("menu");
+  const toggle = document.querySelector(".menu-toggle");
+
+  if (touchStartY - touchEndY > 50 && menu.classList.contains("active")) {
+    menu.classList.remove("active");
+    toggle.classList.remove("active");
+
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+});
+
+// === blokace scrollu při otevřeném menu ===
+document.addEventListener("touchmove", function (e) {
+  const menu = document.getElementById("menu");
+
+  if (menu.classList.contains("active")) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+// === zavření po kliknutí na položku ===
+document.querySelectorAll("#menu a").forEach(link => {
+  link.addEventListener("click", function () {
+    const menu = document.getElementById("menu");
+    const toggle = document.querySelector(".menu-toggle");
+
+    menu.classList.remove("active");
+    toggle.classList.remove("active");
+
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  });
+});
 </script>
 
 </body>
