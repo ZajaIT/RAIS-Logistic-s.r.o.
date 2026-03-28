@@ -204,6 +204,60 @@
       cursor: pointer;
       margin-top: 10px;
     }
+
+    /* ===== KONTAKT ===== */
+
+.highlight {
+  font-weight: 600;
+  color: #B32766;
+  margin-bottom: 30px;
+}
+
+.contact-wrapper {
+  display: flex;
+  gap: 50px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  min-width: 250px;
+  line-height: 1.8;
+}
+
+.contact-info a {
+  color: #B32766;
+  text-decoration: none;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.contact-form button {
+  background: #B32766;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.contact-form button:hover {
+  opacity: 0.9;
+}
   </style>
 </head>
 
@@ -984,6 +1038,37 @@
   </div>
 
 </div>
+
+  <section id="kontakt" class="section">
+  <h1>Kontakt</h1>
+
+  <p>
+    Kontaktujte nás pro sourcing, cenovou nabídku nebo logistické řešení na míru.
+  </p>
+
+  <p class="highlight">
+    👉 Nezávazná poptávka
+  </p>
+
+  <div class="contact-wrapper">
+
+    <div class="contact-info">
+      <p><strong>RAIS Logistic s.r.o.</strong></p>
+      <p>Korejská 5<br>616 00 Brno</p>
+      <p>Email: <a href="mailto:info@raislogistic.cz">info@raislogistic.cz</a></p>
+      <p>Telefon: <a href="tel:+420776365419">+420 776 365 419</a></p>
+    </div>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Jméno / Firma" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Telefon">
+      <textarea placeholder="Vaše poptávka" rows="5" required></textarea>
+      <button type="submit">Odeslat poptávku</button>
+    </form>
+
+  </div>
+</section>
 
 </section>
 
