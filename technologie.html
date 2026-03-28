@@ -316,6 +316,40 @@ footer p {
   padding-top: 20px;
   font-size: 13px;
 }
+    .arrow {
+  width: 0.6em;
+  height: 0.6em;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+/* otočení při otevření */
+.menu-toggle.active .arrow {
+  transform: rotate(135deg);
+}
+
+/* styling MENU */
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* odstranění modrého highlightu */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
   </style>
 </head>
 
@@ -324,7 +358,9 @@ footer p {
 <header>
   <nav>
     <div class="logo"></div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+  <span class="arrow"></span> MENU
+</div>
 
     <ul id="menu">
   <li><a href="index.html#uvod">Domů</a></li>
@@ -1192,7 +1228,11 @@ footer p {
 
 <script>
 function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
+  const menu = document.getElementById("menu");
+  const toggle = document.querySelector(".menu-toggle");
+
+  menu.classList.toggle("active");
+  toggle.classList.toggle("active");
 }
 
 const buttons = document.querySelectorAll(".more-btn");
