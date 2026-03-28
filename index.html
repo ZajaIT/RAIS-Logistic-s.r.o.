@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAIS Logistic</title>
+  
+  <link rel="icon" type="image/webp" href="favicon.webp">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #111;
+    }
+
+html {
+  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+}
+
+    /* ===== NAVBAR ===== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #000;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    nav .logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 18px;
+      width: 150px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+    }
+
+    nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  }
+
+    nav ul li a:hover {
+      opacity: 0.7;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+  min-height: 100vh;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+    section h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #B32766;
+}
+
+.section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 {
+  color: #fff;
+}
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: #000;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        display: none;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+.product {
+  flex-direction: column;
+}
+
+.product.reverse {
+  flex-direction: column;
+}
+    }
+
+    @media (min-width: 769px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+.hero {
+  height: 100vh;
+  background: url("header.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 100%;
+  margin: 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* overlay */
+}
+
+.hero-content {
+  position: relative;
+  color: white;
+  max-width: 1200px;
+  margin: 0;
+  padding: 20px 20px 20px 190px; /*posun textu vpravo 180 víc vpravo */
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 80px;
+  line-height: 1.1;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.hero-content p:first-of-type {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  font-size: 16px;
+  margin-top: 30px;
+  max-width: 800px;
+}
+
+.lang {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lang img {
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+}
+
+.black-strip {
+  width: 100%;
+  height: 50px;
+  background: #000;
+  margin: 0;
+}
+
+.intro {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px 20px 20px;
+  min-height: auto;
+}
+
+.intro p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.intro h2 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #B32766;
+}
+
+.intro ul {
+  padding-left: 20px;
+}
+
+.intro li {
+  margin-bottom: 10px;
+}
+
+.intro p:first-child {
+  margin-top: 0;
+}
+
+.section h2 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #B32766;
+}
+
+.section ul {
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+.section li {
+  margin-bottom: 10px;
+}
+
+/* ===== PRODUKTY ===== */
+
+.product {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.product-image img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-text {
+  max-width: 600px;
+}
+
+.product-text h2 {
+  color: #B32766;
+  margin-bottom: 10px;
+}
+
+.product-text p {
+  font-size: 16px;
+}
+
+/* ===== ROZBALENÍ PRODUKTU ===== */
+
+.more-content {
+  display: none;
+  margin-top: 15px;
+}
+
+.more-btn {
+  color: #B32766;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.no-full-height {
+  min-height: auto;
+}
+
+/* ===== KONTAKT ===== */
+
+.highlight {
+  font-weight: 600;
+  color: #B32766;
+  margin-bottom: 30px;
+}
+
+.contact-wrapper {
+  display: flex;
+  gap: 50px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  min-width: 250px;
+  line-height: 1.8;
+}
+
+.contact-info a {
+  color: #B32766;
+  text-decoration: none;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.contact-form button {
+  background: #B32766;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.contact-form button:hover {
+  opacity: 0.9;
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+  background: #000;
+  color: #fff;
+  padding: 60px 20px 30px;
+}
+
+.footer-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.footer-block {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-block h3 {
+  margin-bottom: 15px;
+  color: #B32766;
+}
+
+.footer-block p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  opacity: 0.7;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  font-size: 13px;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav>
+      <div class="logo"></div>
+
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+      <ul id="menu">
+  <li><a href="#uvod">Domů</a></li>
+  <li><a href="#o-nas">O nás</a></li>
+  <li><a href="#produkty">Produkty</a></li>
+  <li><a href="#technologie">Technologie</a></li>
+  <li><a href="#logistika">Logistika</a></li>
+  <li><a href="#kontakt">Kontakt</a></li>
+
+  <li class="lang">
+    <a href="#"><img src="cz.png" alt="CZ"></a>
+    <a href="#"><img src="en.png" alt="EN"></a>
+  </li>
+</ul>
+    </nav>
+  </header>
+
+  <!-- SECTIONS -->
+  <section id="uvod" class="hero">
+  <div class="hero-content">
+    <h1>RAIS Logistic</h1>
+<p>Váš partner pro sourcing a logistiku již od roku 2009</p>
+<p class="hero-text">
+  RAIS Logistic poskytuje komplexní řešení pro firmy, které chtějí efektivně a spolehlivě nakupovat produkty z Evropské unie i globálních trhů.
+</p>
+  </div>
+</section>
+
+<section class="black-strip"></section>
+
+<section class="intro">
+  <p>
+    Propojujeme zákazníky s ověřenými dodavateli napříč různými odvětvími – od zemědělských komodit až po průmyslové technologie.
+  </p>
+
+  <p>
+    Díky spolupráci s námi získáte jednoho silného partnera, který zastřeší celý proces – od výběru dodavatele až po finální dodání zboží.
+  </p>
+
+  <h2>Hlavní výhody</h2>
+
+  <ul>
+    <li>jeden partner pro více kategorií produktů</li>
+    <li>ověřená síť dodavatelů v EU i globálně</li>
+    <li>flexibilní logistická řešení (LCL / FCL)</li>
+    <li>optimalizace nákladů a nákupního procesu</li>
+  </ul>
+</section>
+
+  <section id="o-nas" class="section">
+  <h1>O nás</h1>
+
+  <p>
+    RAIS Logistic je společnost zaměřená na sourcing a logistiku s cílem zjednodušit nákupní proces pro importéry, distributory a průmyslové firmy.
+  </p>
+
+  <p>
+    Propojujeme sourcing, řízení dodavatelů a logistiku do jednoho efektivního řešení, které klientům šetří čas i náklady.
+  </p>
+
+  <p>
+    Působíme v rámci Evropské unie i globálních trhů a umožňujeme našim klientům přístup k širokému portfoliu produktů bez nutnosti komunikace s více dodavateli.
+  </p>
+
+  <p>
+    Spolupracujeme výhradně s ověřenými partnery, což zajišťuje stabilní kvalitu, spolehlivé dodávky a konkurenceschopné ceny.
+  </p>
+
+<h2>Specializace</h2>
+<ul>
+  <li>zemědělské a potravinářské komodity</li>
+  <li>průmyslové technologie</li>
+  <li>IT hardware a elektronika</li>
+</ul>
+
+<h2>Zajišťujeme</h2>
+<ul>
+  <li>sourcing produktů na míru</li>
+  <li>výběr a ověření dodavatelů</li>
+  <li>logistiku a přepravu</li>
+  <li>konsolidaci zásilek, třídění a balení</li>
+  <li>dodání kontejnerů (FCL)</li>
+</ul>
+
+<p>
+  Naším cílem je budovat dlouhodobá partnerství založená na důvěře, spolehlivosti a efektivitě.
+</p>
+</section>
+
+<section id="produkty" class="section">
+  <h1>Zemědělské komodity</h1>
+
+  <p>
+    Dodáváme široké portfolio zemědělských produktů se zaměřením na velkoobjemové dodávky, stabilní kvalitu a spolehlivý sourcing.
+  </p>
+
+<!-- PRODUKT 1 -->
+  <div class="product">
+    <div class="product-image">
+      <img src="kmin.jpeg" alt="Kmín (Caraway seeds)">
+    </div>
+
+    <div class="product-text">
+      <h2>Kmín (Caraway seeds)</h2>
+      <p>
+        Kmín je tradiční evropské koření široce využívané v potravinářství, zejména v pekařství a výrobě kořenících směsí.
+      </p>
+      <p class="more-btn">Zjistit více ↓</p>
+      <div class="more-content">
+  <p>
+    Dodáváme kmín převážně z produkce Evropské unie (Česká republika, Polsko, Litva, Finsko), balený dle požadavků zákazníka.
+  </p>
+
+  <p><strong>Hlavní vlastnosti:</strong></p>
+  <ul>
+    <li>výrazná, typická vůně a chuť</li>
+    <li>vysoký obsah esenciálních olejů</li>
+    <li>vysoká čistota (čištěné a tříděné)</li>
+    <li>jednotná velikost zrn</li>
+    <li>stabilní kvalita napříč dodávkami</li>
+    <li>vhodný pro potravinářské využití (food grade)</li>
+    <li>dobrá skladovatelnost při správných podmínkách</li>
+    <li>dostupnost v různých kvalitativních třídách</li>
+  </ul>
+
+  <p><strong>Využití:</strong></p>
+  <ul>
+    <li>pekařská výroba (chléb, pečivo)</li>
+    <li>výroba kořenících směsí</li>
+    <li>potravinářské zpracování (masné výrobky, zelí, polévky)</li>
+    <li>gastronomický sektor (restaurace, catering)</li>
+    <li>tradiční kuchyně (středoevropská)</li>
+    <li>zpracování a balení pro retail</li>
+  </ul>
+</div>
+    </div>
+  </div>
+
+<!-- PRODUKT 2 -->
+  <div class="product">
+    <div class="product-image">
+      <img src="koriandr.jpeg" alt="Koriandr">
+    </div>
+
+    <div class="product-text">
+      <h2>Koriandr</h2>
+      <p>
+        Koriandr je důležitou surovinou v potravinářství i výrobě koření.
+      </p>
+      <p class="more-btn">Zjistit více ↓</p>
+
+<div class="more-content">
+  <p>
+    Dodáváme koriandr s důrazem na kvalitu a konzistenci.
+  </p>
+
+  <p><strong>Hlavní vlastnosti:</strong></p>
+  <ul>
+    <li>jemná aromatická vůně s lehce citrusovým tónem</li>
+    <li>vysoký obsah esenciálních olejů</li>
+    <li>jednotná velikost a kulatý tvar semen</li>
+    <li>vysoká čistota (čištěné a tříděné)</li>
+    <li>stabilní kvalita napříč dodávkami</li>
+    <li>vhodný pro potravinářské využití (food grade)</li>
+    <li>dobrá skladovatelnost</li>
+    <li>dostupnost v různých kvalitativních třídách</li>
+  </ul>
+
+  <p><strong>Využití:</strong></p>
+  <ul>
+    <li>výroba kořenících směsí</li>
+    <li>potravinářské zpracování (masné výrobky, omáčky, polévky)</li>
+    <li>pekařská výroba (kořeněné pečivo)</li>
+    <li>gastronomický sektor (restaurace, catering)</li>
+    <li>mezinárodní kuchyně (asijská, indická, středomořská)</li>
+    <li>výroba marinád a dochucovadel</li>
+    <li>zpracování a balení pro retail</li>
+  </ul>
+</div>
+    </div>
+  </div>
+
+<!-- PRODUKT 3 -->
+<div class="product">
+  <div class="product-image">
+    <img src="cocka.jpeg" alt="Čočka">
+  </div>
+
+  <div class="product-text">
+    <h2>Čočka červená a zelená</h2>
+    <p>
+  Dodáváme kvalitní luštěniny vhodné pro potravinářství, velkoobchod i průmyslové zpracování.
+</p>
+    <p class="more-btn">Zjistit více ↓</p>
+
+<div class="more-content">
+  <p>
+    Čočka (červená i zelená) je vysoce poptávaná díky rychlé přípravě a širokému využití.
+  </p>
+
+  <p><strong>Hlavní vlastnosti:</strong></p>
+  <ul>
+    <li>vysoká kvalita vhodná pro potravinářské využití (food grade)</li>
+    <li>čištěná a tříděná s minimálním obsahem nečistot</li>
+    <li>jednotná velikost a barva zrn</li>
+    <li>stabilní kvalita napříč dodávkami</li>
+    <li>dobrá skladovatelnost</li>
+    <li>vhodná pro velkoobjemové dodávky</li>
+    <li>dostupnost z EU i mimo EU</li>
+  </ul>
+
+  <p><strong>Využití:</strong></p>
+  <ul>
+    <li>potravinářská výroba</li>
+    <li>výroba hotových jídel</li>
+    <li>polévky, kaše a přílohy</li>
+    <li>zpracování a balení pro retail</li>
+    <li>gastronomický sektor (restaurace, catering)</li>
+    <li>velkoobchodní distribuce</li>
+  </ul>
+</div>
+  </div>
+</div>
+
+<!-- PRODUKT 4 -->
+<div class="product">
+  <div class="product-image">
+    <img src="cizrna.jpeg" alt="Cizrna">
+  </div>
+
+  <div class="product-text">
+    <h2>Cizrna</h2>
+    <p>
+      Cizrna patří mezi nejžádanější luštěniny na globálním trhu.
+    </p>
+    <p class="more-btn">Zjistit více ↓</p>
+
+<div class="more-content">
+  <p><strong>Hlavní vlastnosti:</strong></p>
+  <ul>
+    <li>vysoká kvalita vhodná pro potravinářské využití (food grade)</li>
+    <li>čištěná a tříděná s minimálním obsahem nečistot</li>
+    <li>jednotná velikost (možnost kalibrovaných tříd)</li>
+    <li>vysoká nutriční hodnota (bohatá na bílkoviny a vlákninu)</li>
+    <li>stabilní kvalita napříč dodávkami</li>
+    <li>dobrá skladovatelnost</li>
+    <li>vhodná pro velkoobjemové dodávky</li>
+    <li>dostupnost z EU i mimo EU</li>
+  </ul>
+
+  <p><strong>Využití:</strong></p>
+  <ul>
+    <li>potravinářská výroba</li>
+    <li>výroba hummusu</li>
+    <li>výroba hotových jídel a polotovarů</li>
+    <li>polévky, saláty a přílohy</li>
+    <li>gastronomický sektor (restaurace, catering)</li>
+    <li>zpracování a balení pro retail</li>
+    <li>velkoobchodní distribuce</li>
+  </ul>
+</div>
+  </div>
+</div>
+
+<!-- PRODUKT 5 -->
+<div class="product">
+  <div class="product-image">
+    <img src="mouka.jpeg" alt="Pšeničná mouka">
+  </div>
+
+  <div class="product-text">
+    <h2>Pšeničná mouka</h2>
+    <p>
+      Dodáváme pšeničnou mouku v různých typech dle požadavků zákazníka a způsobu využití.
+    </p>
+    <p class="more-btn">Zjistit více ↓</p>
+
+<div class="more-content">
+  <p><strong>Hlavní vlastnosti:</strong></p>
+  <ul>
+    <li>vysoká kvalita vhodná pro potravinářské využití (food grade)</li>
+    <li>stabilní a konzistentní kvalita napříč dodávkami</li>
+    <li>dostupnost v různých typech dle obsahu lepku a použití</li>
+    <li>jemná struktura a dobrá zpracovatelnost</li>
+    <li>kontrolovaný obsah vlhkosti</li>
+    <li>vhodná pro velkoobjemové dodávky</li>
+    <li>dobrá skladovatelnost při správných podmínkách</li>
+    <li>dostupnost z EU i dalších regionů</li>
+  </ul>
+
+  <p><strong>Využití:</strong></p>
+  <ul>
+    <li>pekařská výroba (chléb, pečivo)</li>
+    <li>výroba těstovin a dalších potravin</li>
+    <li>průmyslové potravinářské zpracování</li>
+    <li>cukrářská výroba</li>
+    <li>gastronomický sektor (restaurace, catering)</li>
+    <li>zpracování a balení pro retail</li>
+    <li>velkoobchodní distribuce</li>
+  </ul>
+</div>
+  </div>
+</div>
+
+</section>
+
+<section id="technologie" class="section">
+  <h1>Technologie</h1>
+
+  <p>
+    Dodáváme průmyslové a technologické produkty určené pro automatizaci, řízení výroby a moderní IT infrastrukturu.
+  </p>
+
+  <p>
+    Zaměřujeme se na řešení, která podporují efektivitu, spolehlivost a digitalizaci výrobních i technologických procesů.
+  </p>
+
+  <p>
+    Naše portfolio zahrnuje komponenty a zařízení vhodné pro náročné průmyslové prostředí, kde je klíčová stabilita, výkon a dlouhodobá spolehlivost.
+  </p>
+
+  <h2>Oblasti využití:</h2>
+  <ul>
+    <li>automatizace výrobních procesů</li>
+    <li>řízení a optimalizace výroby</li>
+    <li>průmyslová elektronika a embedded řešení</li>
+    <li>AI a edge computing</li>
+    <li>IT infrastruktura a datová řešení</li>
+  </ul>
+
+  <p>
+    Spolupracujeme s ověřenými výrobci a dodavateli, což nám umožňuje dodávat kvalitní a technicky spolehlivá řešení.
+  </p>
+
+  <p>
+    Zajišťujeme nejen dodávku produktů, ale i sourcing vhodných řešení dle konkrétních potřeb klienta.
+  </p>
+¨
+  <p>
+  <strong><a href="technologie.html">Kompletní portfolio technologických produktů zde →</a></strong>
+</p>
+</section>
+
+<section id="logistika" class="section">
+  <h1>Logistika</h1>
+
+  <p>
+    Zajišťujeme kompletní logistická řešení od dodavatele až po finální destinaci.
+  </p>
+
+  <p>Naše služby zahrnují:</p>
+  <ul>
+    <li>silniční dopravu v rámci EU</li>
+    <li>námořní přepravu (LCL / FCL)</li>
+    <li>konsolidaci zásilek</li>
+    <li>koordinaci dodavatelského řetězce</li>
+  </ul>
+
+  <p>
+    Díky propojení sourcingu a logistiky zajišťujeme efektivní a nákladově optimalizované dodávky.
+  </p>
+
+  <h2>Vozový park a balicí technologie</h2>
+
+  <p>
+    Disponujeme vlastním vozovým parkem a moderním technickým zázemím, které nám umožňuje pružně reagovat na požadavky klientů a zajistit plynulý průběh logistických operací.
+  </p>
+
+  <p>
+    Vlastní vozidla využíváme pro přepravy v rámci Evropské unie, přesuny mezi sklady i řešení individuálních zakázek. Díky tomu máme plnou kontrolu nad termíny i kvalitou přepravy.
+  </p>
+
+  <p>
+    Součástí našeho zázemí je profesionální balicí technika, která umožňuje efektivní manipulaci se zbožím a jeho bezpečné zajištění během přepravy.
+  </p>
+
+  <p>Zajišťujeme:</p>
+  <ul>
+    <li>balení a přebalování zboží</li>
+    <li>paletizaci a fixaci (stretch fólie, páskování)</li>
+    <li>konsolidaci zásilek</li>
+    <li>přípravu pro export i distribuci</li>
+  </ul>
+
+  <p>
+    Díky tomu nabízíme komplexní logistické řešení s důrazem na spolehlivost, flexibilitu a efektivitu.
+  </p>
+</section>
+
+<section class="section no-full-height">
+  <h1>Proč spolupracovat s námi</h1>
+
+  <ul>
+    <li>
+      <strong>Jeden partner pro více kategorií produktů</strong><br>
+      Zjednodušujeme nákupní proces – komunikujete pouze s jedním spolehlivým partnerem.
+    </li>
+
+    <li>
+      <strong>Ověřená síť dodavatelů</strong><br>
+      Spolupracujeme s prověřenými výrobci a dodavateli, což zajišťuje stabilní kvalitu a spolehlivé dodávky.
+    </li>
+
+    <li>
+      <strong>Flexibilní a individuální řešení</strong><br>
+      Sourcing i logistiku přizpůsobujeme konkrétním požadavkům klienta.
+    </li>
+
+    <li>
+      <strong>Stabilní kvalita a kontinuita dodávek</strong><br>
+      Minimalizujeme výkyvy v dodavatelském řetězci.
+    </li>
+
+    <li>
+      <strong>Efektivní logistika a optimalizace nákladů</strong><br>
+      Pomáháme snižovat náklady a zvyšovat efektivitu dodávek.
+    </li>
+
+    <li>
+      <strong>Dlouhodobá B2B spolupráce</strong><br>
+      Budujeme vztahy založené na důvěře a dlouhodobém partnerství.
+    </li>
+  </ul>
+</section>
+
+<section id="kontakt" class="section">
+  <h1>Kontakt</h1>
+
+  <p>
+    Kontaktujte nás pro sourcing, cenovou nabídku nebo logistické řešení na míru.
+  </p>
+
+  <p class="highlight">
+    👉 Nezávazná poptávka
+  </p>
+
+  <div class="contact-wrapper">
+
+    <!-- KONTAKTNÍ ÚDAJE -->
+    <div class="contact-info">
+      <p><strong>RAIS Logistic s.r.o.</strong></p>
+      <p>Korejská 5<br>616 00 Brno</p>
+      <p>Email: <a href="mailto:info@raislogistic.cz">info@raislogistic.cz</a></p>
+      <p>Telefon: <a href="tel:+420776365419">+420 776 365 419</a></p>
+    </div>
+
+    <!-- FORMULÁŘ -->
+    <form class="contact-form">
+      <input type="text" placeholder="Jméno / Firma" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Telefon">
+      <textarea placeholder="Vaše poptávka" rows="5" required></textarea>
+      <button type="submit">Odeslat poptávku</button>
+    </form>
+
+  </div>
+</section>
+
+  <!-- JS -->
+  <script>
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+  }
+
+  // uloží scroll jen při odchodu (reload / refresh)
+  window.addEventListener("beforeunload", function () {
+    sessionStorage.setItem("scrollPosition", window.scrollY);
+  });
+
+  // po reloadu vrátí zpět (jen pokud existuje)
+  window.addEventListener("load", function () {
+    const scrollPosition = sessionStorage.getItem("scrollPosition");
+    if (scrollPosition !== null) {
+      window.scrollTo(0, parseInt(scrollPosition));
+    }
+  });
+
+const buttons = document.querySelectorAll(".more-btn");
+
+  buttons.forEach(button => {
+  button.addEventListener("click", function () {
+    const content = this.nextElementSibling;
+
+    // zavře všechny ostatní
+    document.querySelectorAll(".more-content").forEach(el => {
+      if (el !== content) {
+        el.style.display = "none";
+      }
+    });
+
+    document.querySelectorAll(".more-btn").forEach(btn => {
+      if (btn !== this) {
+        btn.textContent = "Zjistit více ↓";
+      }
+    });
+
+    // toggle aktuálního
+    if (content.style.display === "block") {
+      content.style.display = "none";
+      this.textContent = "Zjistit více ↓";
+    } else {
+      content.style.display = "block";
+      this.textContent = "Zavřít ↑";
+    }
+  });
+});
+</script>
+
+<footer class="footer">
+
+  <div class="footer-wrapper">
+
+    <!-- LEVÁ ČÁST -->
+    <div class="footer-block">
+      <h3>RAIS Logistic</h3>
+      <p>
+        IČO: 283 47 706<br>
+        DIČ: CZ28347706<br><br>
+
+        vedená u Krajského soudu v Brně,<br>
+        oddíl C, vložka 62845<br><br>
+
+        ID datové schránky: 7c2v8v5
+      </p>
+    </div>
+
+    <!-- STŘED -->
+    <div class="footer-block">
+      <h3>Bankovní spojení</h3>
+      <p>
+        Oberbank AG pobočka Česká republika<br>
+        náměstí Přemysla Otakara II 6/3<br>
+        370 01 České Budějovice<br><br>
+
+        SWIFT/BIC: OBKLCZ2X
+      </p>
+
+      <p>
+        <strong>CZK:</strong> 2221112160/8040<br>
+        IBAN: CZ9880400000002221112160<br><br>
+
+        <strong>EUR:</strong> 2221112187/8040<br>
+        IBAN: CZ4880400000002221112187<br><br>
+
+        <strong>USD:</strong> 2221112195/8040<br>
+        IBAN: CZ2680400000002221112195
+      </p>
+    </div>
+
+    <!-- PRAVÁ ČÁST -->
+    <div class="footer-block">
+      <h3>Kontakt</h3>
+      <p>
+        Email: <a href="mailto:info@raislogistic.com">info@raislogistic.com</a><br>
+        Telefon: <a href="tel:+420123456789">+420 123 456 789</a>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- SPODNÍ ŘÁDEK -->
+  <div class="footer-bottom">
+    <p>
+      © 2026 RAIS Logistic. All rights reserved.<br>
+      Designed by <a href="https://www.zajait.cz" target="_blank">ZajaIT</a>
+    </p>
+  </div>
+
+</footer>
+
+</body>
+</html>
