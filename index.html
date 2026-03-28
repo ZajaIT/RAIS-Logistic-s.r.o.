@@ -1068,6 +1068,19 @@ document.addEventListener("touchend", function (e) {
     e.preventDefault();
   }
 }, { passive: false });
+
+    document.querySelectorAll("#menu a").forEach(link => {
+  link.addEventListener("click", function () {
+    const menu = document.getElementById("menu");
+    const toggle = document.querySelector(".menu-toggle");
+
+    menu.classList.remove("active");
+    toggle.classList.remove("active");
+
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  });
+});
 </script>
 
 <footer class="footer">
