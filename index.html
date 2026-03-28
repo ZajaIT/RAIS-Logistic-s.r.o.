@@ -1061,6 +1061,13 @@ document.addEventListener("touchend", function (e) {
     document.documentElement.style.overflow = "";
   }
 });
+    document.addEventListener("touchmove", function (e) {
+  const menu = document.getElementById("menu");
+
+  if (menu.classList.contains("active")) {
+    e.preventDefault();
+  }
+}, { passive: false });
 </script>
 
 <footer class="footer">
