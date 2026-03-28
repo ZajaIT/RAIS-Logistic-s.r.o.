@@ -1015,6 +1015,29 @@ const buttons = document.querySelectorAll(".more-btn");
     document.documentElement.style.overflow = "";
   }
 });
+
+    let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", function (e) {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", function (e) {
+  touchEndX = e.changedTouches[0].screenX;
+
+  const menu = document.getElementById("menu");
+  const toggle = document.querySelector(".menu-toggle");
+
+  // swipe doprava (min 50px)
+  if (touchEndX - touchStartX > 50 && menu.classList.contains("active")) {
+    menu.classList.remove("active");
+    toggle.classList.remove("active");
+
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+});
 </script>
 
 <footer class="footer">
