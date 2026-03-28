@@ -999,6 +999,22 @@ const buttons = document.querySelectorAll(".more-btn");
     document.body.style.overflow = "";
   }
 });
+
+    document.addEventListener("click", function (e) {
+  const menu = document.getElementById("menu");
+  const toggle = document.querySelector(".menu-toggle");
+
+  const isClickInsideMenu = menu.contains(e.target);
+  const isClickOnToggle = toggle.contains(e.target);
+
+  if (!isClickInsideMenu && !isClickOnToggle && menu.classList.contains("active")) {
+    menu.classList.remove("active");
+    toggle.classList.remove("active");
+
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
+});
 </script>
 
 <footer class="footer">
