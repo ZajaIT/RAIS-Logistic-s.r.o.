@@ -1255,6 +1255,14 @@ function toggleMenu() {
 
   menu.classList.toggle("active");
   toggle.classList.toggle("active");
+
+  if (menu.classList.contains("active")) {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+  }
 }
 
 const buttons = document.querySelectorAll(".more-btn");
