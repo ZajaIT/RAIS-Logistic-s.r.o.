@@ -433,11 +433,15 @@ nav .logo {
   border-left: 2px solid white;
   border-bottom: 2px solid white;
   transform: rotate(-45deg);
+  transition: transform 0.2s ease;
   display: inline-block;
   margin-right: 8px;
   vertical-align: middle;
   position: relative;
   top: -4px;
+}
+    .menu-toggle.active .arrow {
+  transform: rotate(135deg);
 }
 
   </style>
@@ -914,8 +918,12 @@ nav .logo {
   <!-- JS -->
   <script>
   function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
-  }
+  const menu = document.getElementById("menu");
+  const toggle = document.querySelector(".menu-toggle");
+
+  menu.classList.toggle("active");
+  toggle.classList.toggle("active");
+}
 
   // uloží scroll jen při odchodu (reload / refresh)
   window.addEventListener("beforeunload", function () {
