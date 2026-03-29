@@ -1500,6 +1500,13 @@ lightbox.addEventListener("touchend", function (e) {
     showImage();
   }
 });
+  lightbox.addEventListener("click", function (e) {
+  // pokud klikneš přímo na pozadí (ne na obrázek / šipky)
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+    document.body.style.overflow = "";
+  }
+});
 </script>
 
   
