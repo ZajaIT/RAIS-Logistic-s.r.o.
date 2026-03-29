@@ -1279,10 +1279,18 @@ btn.textContent = translations[currentLang].more_btn;
 }
     
     else {
-      content.style.display = "block";
-      const currentLang = localStorage.getItem("lang") || "cz";
-this.textContent = currentLang === "cz" ? "Zavřít ↑" : "Close ↑";
-    }
+  const currentLang = localStorage.getItem("lang") || "cz";
+
+  // 👉 nastav správný jazyk obsahu při otevření
+  const key = content.getAttribute("data-key");
+  if (translations[currentLang][key]) {
+    content.innerHTML = translations[currentLang][key];
+  }
+
+  content.style.display = "block";
+
+  this.textContent = currentLang === "cz" ? "Zavřít ↑" : "Close ↑";
+}
   });
 });
     window.addEventListener("resize", function () {
