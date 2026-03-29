@@ -1165,7 +1165,7 @@ nav .logo {
     </div>
 
     <!-- FORMULÁŘ -->
-    <form class="contact-form" action="https://formspree.io/f/mbdpgawo" method="POST" accept-charset="UTF-8">
+    <form class="contact-form" action="https://formspree.io/f/mbdpgawo" method="POST" accept-charset="UTF-8" onsubmit="handleSubmit(event)">
   <input type="text" name="name" placeholder="Jméno / Firma" required>
   <input type="email" name="email" placeholder="Email" required>
   <input type="tel" name="phone" placeholder="Telefon">
@@ -1175,6 +1175,10 @@ nav .logo {
 
   <button type="submit">Odeslat poptávku</button>
 </form>
+
+    <div id="form-message" style="display:none; margin-top:15px; color:#B32766; font-weight:600;">
+  Vaše zpráva byla odeslána. Děkujeme!
+</div>
 
   </div>
 </section>
@@ -1394,6 +1398,31 @@ lightbox.addEventListener('touchend', e => {
 });
 
 });
+    function handleSubmit(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const data = new FormData(form);
+
+  fetch(form.action, {
+    method: "POST",
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      document.getElementById("form-message").style.display = "block";
+      form.reset();
+    } else {
+      alert("Něco se nepovedlo. Zkuste to prosím znovu.");
+    }
+  })
+  .catch(error => {
+    alert("Chyba připojení.");
+  });
+}
 </script>
 
 <footer class="footer">
