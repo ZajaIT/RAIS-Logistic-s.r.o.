@@ -941,6 +941,12 @@ nav .logo {
 
   <!-- JS -->
   <script>
+
+  history.scrollRestoration = "manual";
+
+window.addEventListener("load", function () {
+  window.scrollTo(0, 0);
+});
   function toggleMenu() {
   const menu = document.getElementById("menu");
   const toggle = document.querySelector(".menu-toggle");
