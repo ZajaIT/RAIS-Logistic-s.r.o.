@@ -815,11 +815,11 @@ nav .logo {
 
     <p class="more-btn" data-key="more_btn">Zjistit více ↓</p>
 
-    <div class="more-content">
+    <div class="more-content" data-key="product_1_more"></div>
       <!-- NECH BEZ ZMĚNY -->
   <p>
-    Dodáváme kmín převážně z produkce Evropské unie (Česká republika, Polsko, Litva, Finsko), balený dle požadavků zákazníka.
-  </p>
+  Dodáváme kmín převážně z produkce Evropské unie (Česká republika, Polsko, Litva, Finsko), balený dle požadavků zákazníka.
+</p>
 
   <p><strong>Hlavní vlastnosti:</strong></p>
   <ul>
@@ -1628,6 +1628,32 @@ intro_1: "jeden partner pro více kategorií produktů",
 intro_2: "ověřená síť dodavatelů v EU i globálně",
 intro_3: "flexibilní logistická řešení (LCL / FCL)",
 intro_4: "optimalizace nákladů a nákupního procesu",
+
+    product_1_more: `
+<p>Dodáváme kmín převážně z produkce Evropské unie (Česká republika, Polsko, Litva, Finsko), balený dle požadavků zákazníka.</p>
+
+<p><strong>Hlavní vlastnosti:</strong></p>
+<ul>
+  <li>výrazná, typická vůně a chuť</li>
+  <li>vysoký obsah esenciálních olejů</li>
+  <li>vysoká čistota (čištěné a tříděné)</li>
+  <li>jednotná velikost zrn</li>
+  <li>stabilní kvalita napříč dodávkami</li>
+  <li>vhodný pro potravinářské využití (food grade)</li>
+  <li>dobrá skladovatelnost při správných podmínkách</li>
+  <li>dostupnost v různých kvalitativních třídách</li>
+</ul>
+
+<p><strong>Využití:</strong></p>
+<ul>
+  <li>pekařská výroba (chléb, pečivo)</li>
+  <li>výroba kořenících směsí</li>
+  <li>potravinářské zpracování (masné výrobky, zelí, polévky)</li>
+  <li>gastronomický sektor (restaurace, catering)</li>
+  <li>tradiční kuchyně (středoevropská)</li>
+  <li>zpracování a balení pro retail</li>
+</ul>
+`,
   },
 
   en: {
@@ -1765,6 +1791,32 @@ intro_1: "one partner for multiple product categories",
 intro_2: "verified supplier network across the EU and global markets",
 intro_3: "flexible logistics solutions (LCL / FCL)",
 intro_4: "cost optimization and efficient procurement",
+
+    product_1_more: `
+<p>We supply caraway seeds primarily sourced from the European Union (Czech Republic, Poland, Lithuania, Finland), packaged according to customer requirements.</p>
+
+<p><strong>Key Features:</strong></p>
+<ul>
+  <li>strong, characteristic aroma and flavor</li>
+  <li>high essential oil content</li>
+  <li>high purity (cleaned and sorted)</li>
+  <li>uniform seed size</li>
+  <li>consistent quality across shipments</li>
+  <li>suitable for food-grade applications</li>
+  <li>good storage stability under proper conditions</li>
+  <li>available in different quality grades</li>
+</ul>
+
+<p><strong>Applications:</strong></p>
+<ul>
+  <li>bakery production (bread, pastries)</li>
+  <li>spice blends and seasoning production</li>
+  <li>food processing (meat products, cabbage dishes, soups)</li>
+  <li>food service industry (restaurants, catering)</li>
+  <li>traditional cuisine (Central European)</li>
+  <li>retail packaging and processing</li>
+</ul>
+`,
   }
 };
     function setLanguage(lang) {
@@ -1779,11 +1831,19 @@ intro_4: "cost optimization and efficient procurement",
     if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
       el.placeholder = translation;
     } else {
-      el.textContent = translation;
+      el.innerHTML = translation;
     }
   });
 
   localStorage.setItem("lang", lang);
+      document.querySelectorAll(".more-content").forEach(el => {
+    if (el.style.display === "block") {
+      const key = el.getAttribute("data-key");
+      if (translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    }
+  });
 }
     document.addEventListener("DOMContentLoaded", () => {
   const savedLang = localStorage.getItem("lang") || "cz";
