@@ -416,6 +416,9 @@ nav ul li:last-child {
 .product img:hover {
   transform: scale(1.03);
 }
+    #lightbox {
+  touch-action: pan-y;
+}
   </style>
 </head>
 
@@ -1470,6 +1473,28 @@ prevBtn.onclick = () => {
   currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
   showImage();
 };
+  let touchStartXLightbox = 0;
+let touchEndXLightbox = 0;
+
+lightbox.addEventListener("touchstart", function (e) {
+  touchStartXLightbox = e.changedTouches[0].screenX;
+});
+
+lightbox.addEventListener("touchend", function (e) {
+  touchEndXLightbox = e.changedTouches[0].screenX;
+
+  // swipe vlevo
+  if (touchStartXLightbox - touchEndXLightbox > 50) {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    showImage();
+  }
+
+  // swipe vpravo
+  if (touchEndXLightbox - touchStartXLightbox > 50) {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    showImage();
+  }
+});
 </script>
 
   
