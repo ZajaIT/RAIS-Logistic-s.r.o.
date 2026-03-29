@@ -507,47 +507,49 @@ nav .logo {
     .contact-logo {
   align-self: flex-start;
 }
-    /* ===== LOGISTIKA BACKGROUND ===== */
+   /* ===== LOGISTIKA FULL WIDTH BACKGROUND ===== */
 
 #logistika {
   position: relative;
   color: #fff;
+  z-index: 1;
 }
 
+/* full-width background hack */
 #logistika::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
   background: url("car.jpeg") center/cover no-repeat;
-  z-index: 0;
+  z-index: -2;
 }
 
 #logistika::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5); /* lehké ztmavení pro čitelnost */
-  z-index: 1;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
 }
 
-/* obsah nad obrázkem */
-#logistika * {
-  position: relative;
-  z-index: 2;
-}
-
-/* nadpis + ikonka bílé */
-#logistika h1 {
+/* text + ikonky bílé */
+#logistika h1,
+#logistika h2,
+#logistika p,
+#logistika li {
   color: #fff;
 }
 
 #logistika h1 svg {
   stroke: #fff;
-}
-
-/* případně i h2 */
-#logistika h2 {
-  color: #fff;
 }
   </style>
 </head>
