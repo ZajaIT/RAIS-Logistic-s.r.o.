@@ -687,16 +687,16 @@ nav .logo {
 </div>
 
       <ul id="menu">
-  <li><a href="#uvod">Domů</a></li>
-  <li><a href="#o-nas">O nás</a></li>
-  <li><a href="#produkty">Produkty</a></li>
-  <li><a href="#technologie">Technologie</a></li>
-  <li><a href="#logistika">Logistika</a></li>
-  <li><a href="#kontakt">Kontakt</a></li>
+  <li><a href="#uvod" data-key="menu_home">Domů</a></li>
+  <li><a href="#o-nas" data-key="menu_about">O nás</a></li>
+  <li><a href="#produkty" data-key="menu_products">Produkty</a></li>
+  <li><a href="#technologie" data-key="menu_tech">Technologie</a></li>
+  <li><a href="#logistika" data-key="menu_logistics">Logistika</a></li>
+  <li><a href="#kontakt" data-key="menu_contact">Kontakt</a></li>
 
   <li class="lang">
-    <a href="#"><img src="cz.png" alt="CZ"></a>
-    <a href="#"><img src="en.png" alt="EN"></a>
+    <img src="cz.png" alt="CZ" onclick="setLanguage('cz')">
+<img src="en.png" alt="EN" onclick="setLanguage('en')">
   </li>
 </ul>
     </nav>
@@ -705,11 +705,15 @@ nav .logo {
   <!-- SECTIONS -->
   <section id="uvod" class="hero">
   <div class="hero-content">
-    <h1>RAIS Logistic</h1>
-<p>Váš partner pro sourcing a logistiku již od roku 2009</p>
-<p class="hero-text">
-  Poskytujeme komplexní řešení pro firmy, které chtějí efektivně a spolehlivě nakupovat produkty z Evropské unie i globálních trhů.
-</p>
+    <h1 data-key="hero_title">RAIS Logistic</h1>
+
+    <p data-key="hero_subtitle">
+      Váš partner pro sourcing a logistiku již od roku 2009
+    </p>
+
+    <p class="hero-text" data-key="hero_text">
+      Poskytujeme komplexní řešení pro firmy, které chtějí efektivně a spolehlivě nakupovat produkty z Evropské unie i globálních trhů.
+    </p>
   </div>
 </section>
 
@@ -1462,6 +1466,49 @@ lightbox.addEventListener('touchend', e => {
     alert("Chyba připojení.");
   });
 }
+    const translations = {
+  cz: {
+    menu_home: "Domů",
+    menu_about: "O nás",
+    menu_products: "Produkty",
+    menu_tech: "Technologie",
+    menu_logistics: "Logistika",
+    menu_contact: "Kontakt",
+
+    hero_title: "RAIS Logistic",
+    hero_subtitle: "Váš partner pro sourcing a logistiku již od roku 2009",
+    hero_text: "Poskytujeme komplexní řešení pro firmy, které chtějí efektivně a spolehlivě nakupovat produkty z Evropské unie i globálních trhů."
+  },
+
+  en: {
+    menu_home: "Home",
+    menu_about: "About us",
+    menu_products: "Products",
+    menu_tech: "Technology",
+    menu_logistics: "Logistics",
+    menu_contact: "Contact",
+
+    hero_title: "RAIS Logistic",
+    hero_subtitle: "Your partner for sourcing and logistics since 2009",
+    hero_text: "We provide comprehensive solutions for companies that want to efficiently and reliably source products from the European Union and global markets."
+  }
+};
+    function setLanguage(lang) {
+  const elements = document.querySelectorAll("[data-key]");
+
+  elements.forEach(el => {
+    const key = el.getAttribute("data-key");
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  localStorage.setItem("lang", lang);
+}
+    document.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("lang") || "cz";
+  setLanguage(savedLang);
+});
 </script>
 
 <footer class="footer">
