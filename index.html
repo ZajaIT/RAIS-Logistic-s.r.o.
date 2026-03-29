@@ -1227,18 +1227,24 @@ nav .logo {
 
     <!-- FORMULÁŘ -->
     <form class="contact-form" action="https://formspree.io/f/mbdpgawo" method="POST" accept-charset="UTF-8" onsubmit="handleSubmit(event)">
-  <input type="text" name="name" placeholder="Jméno / Firma" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <input type="tel" name="phone" placeholder="Telefon">
-  <textarea name="message" placeholder="Vaše poptávka" rows="5" required></textarea>
+
+  <input type="text" name="name" data-key="form_name" placeholder="Jméno / Firma" required>
+
+  <input type="email" name="email" data-key="form_email" placeholder="Email" required>
+
+  <input type="tel" name="phone" data-key="form_phone" placeholder="Telefon">
+
+  <textarea name="message" data-key="form_message" placeholder="Vaše poptávka" rows="5" required></textarea>
 
   <input type="hidden" name="_subject" value="Nová poptávka z webu">
-<input type="hidden" name="_cc" value="info@zajait.cz, info@raislogistic.cz">
+  <input type="hidden" name="_cc" value="info@zajait.cz, info@raislogistic.cz">
 
-  <button type="submit">Odeslat poptávku</button>
-      <div id="form-message" style="display:none; margin-top:5px; color:#B32766; font-weight:600; text-align:center;">
-  Vaše zpráva byla odeslána. Děkujeme!
-</div>
+  <button type="submit" data-key="form_btn">Odeslat poptávku</button>
+
+  <div id="form-message" data-key="form_success" style="display:none; margin-top:5px; color:#B32766; font-weight:600; text-align:center;">
+    Vaše zpráva byla odeslána. Děkujeme!
+  </div>
+
 </form>
 
     </div>
@@ -1603,6 +1609,13 @@ why_5_text: "Pomáháme snižovat náklady a zvyšovat efektivitu dodávek.",
 
 why_6_title: "Dlouhodobá B2B spolupráce",
 why_6_text: "Budujeme vztahy založené na důvěře a dlouhodobém partnerství.",
+
+    form_name: "Jméno / Firma",
+form_email: "Email",
+form_phone: "Telefon",
+form_message: "Vaše poptávka",
+form_btn: "Odeslat poptávku",
+form_success: "Vaše zpráva byla odeslána. Děkujeme!",
   },
 
   en: {
@@ -1723,6 +1736,13 @@ why_5_text: "We help reduce costs and improve operational efficiency.",
 
 why_6_title: "Long-term B2B partnership",
 why_6_text: "We build relationships based on trust, transparency, and long-term cooperation.",
+
+    form_name: "Name / Company",
+form_email: "Email",
+form_phone: "Phone",
+form_message: "Your inquiry",
+form_btn: "Send request",
+form_success: "Your message has been sent. Thank you!",
   }
 };
     function setLanguage(lang) {
@@ -1730,8 +1750,14 @@ why_6_text: "We build relationships based on trust, transparency, and long-term 
 
   elements.forEach(el => {
     const key = el.getAttribute("data-key");
-    if (translations[lang][key]) {
-      el.textContent = translations[lang][key];
+    const translation = translations[lang][key];
+
+    if (!translation) return;
+
+    if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+      el.placeholder = translation;
+    } else {
+      el.textContent = translation;
     }
   });
 
