@@ -498,15 +498,17 @@ nav ul li:last-child {
   </div>
 
   <div class="product-text">
-    <h2>Industrial PLC Motherboard High Performance Control Board Embedded System OEM Custom</h2>
+    <h2 data-key="product_1_title">
+Industrial PLC Motherboard High Performance Control Board Embedded System OEM Custom
+</h2>
 
-    <p>
-  Naše průmyslová PLC základní deska je navržena pro vysoce výkonné automatizační a řídicí systémy. Poskytuje stabilní provoz, vysokou spolehlivost a dlouhou životnost, což ji činí ideální pro průmyslové prostředí.
+<p data-key="product_1_text">
+Naše průmyslová PLC základní deska je navržena pro vysoce výkonné automatizační a řídicí systémy. Poskytuje stabilní provoz, vysokou spolehlivost a dlouhou životnost, což ji činí ideální pro průmyslové prostředí.
 </p>
 
-<p class="more-btn">Zjistit více ↓</p>
+<p class="more-btn" data-key="more_btn">Zjistit více ↓</p>
 
-<div class="more-content">
+<div class="more-content" data-key="product_1_more"></div>
 
   <ul>
     <li>Vysoce výkonná vestavná řídicí deska</li>
@@ -1643,6 +1645,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedLang = localStorage.getItem("lang") || "cz";
   setLanguage(savedLang);
 });
+  translations.cz.product_1_more = `
+<ul>
+  <li>Vysoce výkonná vestavná řídicí deska</li>
+  <li>Vysoká odolnost proti rušení</li>
+  <li>Podpora širokého teplotního rozsahu</li>
+  <li>Stabilní a spolehlivý provoz 24/7</li>
+  <li>Kompatibilita s různými průmyslovými automatizačními systémy</li>
+</ul>
+
+<p>
+Vhodné pro automatizaci výroby, řízení strojů, robotické systémy...
+</p>
+`;
+
+translations.en.product_1_more = `
+"Our industrial PLC motherboard is designed for high-performance automation and control systems. It provides stable operation, high reliability, and long service life, making it ideal for industrial environments.
+
+
+High-performance embedded control board
+Strong anti-interference capability
+Wide temperature range support
+Stable and reliable for 24/7 operation
+Compatible with various industrial automation systems
+
+Factory automation, machinery control, robotics systems, smart manufacturing, and industrial equipment.
+We support OEM &amp; ODM services, including custom design, logo printing, and hardware configuration.
+Contact us for technical specifications and bulk order pricing"
+
+`;
 </script>
 
   
