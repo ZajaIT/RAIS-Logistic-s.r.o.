@@ -432,6 +432,15 @@ nav ul li:last-child {
     .product:first-of-type {
   margin-top: 40px;
 }
+    .contact-logo {
+  margin-top: 5px;
+  max-width: 220px;
+  height: auto;
+  opacity: 0.9;
+
+  display: block;
+  transform: translateX(-52px); /* přesně tvoje hodnota */
+}
   </style>
 </head>
 
@@ -1226,11 +1235,13 @@ nav ul li:last-child {
     <div class="contact-wrapper">
 
     <div class="contact-info">
-      <p><strong>RAIS Logistic s.r.o.</strong></p>
-      <p>Korejská 5<br>616 00 Brno</p>
-      <p>Email: <a href="mailto:info@raislogistic.cz">info@raislogistic.cz</a></p>
-      <p>Telefon: <a href="tel:+420776365419">+420 776 365 419</a></p>
-    </div>
+  <p><strong>RAIS Logistic s.r.o.</strong></p>
+  <p>Korejská 5<br>616 00 Brno</p>
+  <p>Email: <a href="mailto:info@raislogistic.cz">info@raislogistic.cz</a></p>
+  <p>Telefon: <a href="tel:+420776365419">+420 776 365 419</a></p>
+
+  <img src="logo.png" alt="RAIS Logistic" class="contact-logo">
+</div>
 
     <form class="contact-form">
       <input type="text" placeholder="Jméno / Firma" required>
