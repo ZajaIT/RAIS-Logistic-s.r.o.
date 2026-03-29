@@ -603,11 +603,12 @@ nav .logo {
   cursor: pointer;
 }
 
-#lightbox .arrow {
+#lightbox .lightbox-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 40px;
+  font-size: 26px;
+  opacity: 0.8;
   color: #fff;
   cursor: pointer;
   user-select: none;
@@ -1450,8 +1451,8 @@ lightbox.addEventListener('touchend', e => {
 <div id="lightbox">
   <span class="close">&times;</span>
   <img id="lightbox-img">
-  <div class="arrow left">&#10094;</div>
-  <div class="arrow right">&#10095;</div>
+  <div class="lightbox-arrow left">&#10094;</div>
+  <div class="lightbox-arrow right">&#10095;</div>
 </div>
 
 </body>
