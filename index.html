@@ -1926,6 +1926,16 @@ product_5_more: `
   });
 
   localStorage.setItem("lang", lang);
+
+// RESET produktů při změně jazyka
+document.querySelectorAll(".more-content").forEach(el => {
+  el.style.display = "none";
+  el.innerHTML = "";
+});
+
+document.querySelectorAll(".more-btn").forEach(btn => {
+  btn.textContent = translations[lang].more_btn;
+});
       document.querySelectorAll(".more-content").forEach(el => {
     if (el.style.display === "block") {
       const key = el.getAttribute("data-key");
