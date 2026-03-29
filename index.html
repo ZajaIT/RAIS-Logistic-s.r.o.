@@ -1289,7 +1289,8 @@ window.addEventListener("load", function () {
 
     document.querySelectorAll(".more-btn").forEach(btn => {
       if (btn !== this) {
-        btn.textContent = "Zjistit více ↓";
+        const currentLang = localStorage.getItem("lang") || "cz";
+btn.textContent = translations[currentLang].more_btn;
       }
     });
 
