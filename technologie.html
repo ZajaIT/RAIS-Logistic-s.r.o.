@@ -1509,6 +1509,26 @@ lightbox.addEventListener("touchend", function (e) {
     document.body.style.overflow = "";
   }
 });
+  document.addEventListener("keydown", function (e) {
+  // funguje jen když je lightbox otevřený
+  if (lightbox.style.display === "flex") {
+
+    if (e.key === "ArrowRight") {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      showImage();
+    }
+
+    if (e.key === "ArrowLeft") {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      showImage();
+    }
+
+    if (e.key === "Escape") {
+      lightbox.style.display = "none";
+      document.body.style.overflow = "";
+    }
+  }
+});
 </script>
 
   
