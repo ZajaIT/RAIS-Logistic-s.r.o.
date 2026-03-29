@@ -507,7 +507,48 @@ nav .logo {
     .contact-logo {
   align-self: flex-start;
 }
-    
+    /* ===== LOGISTIKA BACKGROUND ===== */
+
+#logistika {
+  position: relative;
+  color: #fff;
+}
+
+#logistika::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("car.jpeg") center/cover no-repeat;
+  z-index: 0;
+}
+
+#logistika::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5); /* lehké ztmavení pro čitelnost */
+  z-index: 1;
+}
+
+/* obsah nad obrázkem */
+#logistika * {
+  position: relative;
+  z-index: 2;
+}
+
+/* nadpis + ikonka bílé */
+#logistika h1 {
+  color: #fff;
+}
+
+#logistika h1 svg {
+  stroke: #fff;
+}
+
+/* případně i h2 */
+#logistika h2 {
+  color: #fff;
+}
   </style>
 </head>
 
