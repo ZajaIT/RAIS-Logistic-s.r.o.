@@ -1394,7 +1394,8 @@ document.querySelectorAll(".more-btn").forEach(btn => {
 this.textContent = translations[currentLang].more_btn;
     } else {
       content.style.display = "block";
-      this.textContent = "Zavřít ↑";
+      const currentLang = localStorage.getItem("lang") || "cz";
+this.textContent = translations[currentLang].close_btn;
     }
   });
 });
@@ -1614,6 +1615,8 @@ lightbox.addEventListener("touchend", function (e) {
     menu_contact: "Kontakt",
 
     more_btn: "Zjistit více ↓"
+    close_btn: "Zavřít ↑"
+    
   },
   en: {
     menu_home: "Home",
@@ -1624,6 +1627,7 @@ lightbox.addEventListener("touchend", function (e) {
     menu_contact: "Contact",
 
     more_btn: "Find out more ↓"
+    close_btn: "Close ↑"
   }
 };
 
