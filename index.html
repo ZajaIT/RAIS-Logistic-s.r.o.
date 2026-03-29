@@ -1165,13 +1165,16 @@ nav .logo {
     </div>
 
     <!-- FORMULÁŘ -->
-    <form class="contact-form" action="https://formspree.io/f/mbdpgawo" method="POST">
-      <input type="text" placeholder="Jméno / Firma" required>
-      <input type="email" placeholder="Email" required>
-      <input type="tel" placeholder="Telefon">
-      <textarea placeholder="Vaše poptávka" rows="5" required></textarea>
-      <button type="submit">Odeslat poptávku</button>
-    </form>
+    <form class="contact-form" action="https://formspree.io/f/mbdpgawo" method="POST" accept-charset="UTF-8">
+  <input type="text" name="name" placeholder="Jméno / Firma" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="tel" name="phone" placeholder="Telefon">
+  <textarea name="message" placeholder="Vaše poptávka" rows="5" required></textarea>
+
+  <input type="hidden" name="_subject" value="Nová poptávka z webu">
+
+  <button type="submit">Odeslat poptávku</button>
+</form>
 
   </div>
 </section>
