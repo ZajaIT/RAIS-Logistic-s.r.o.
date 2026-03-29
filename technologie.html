@@ -1644,6 +1644,9 @@ function setLanguage(lang) {
   });
 
   localStorage.setItem("lang", lang);
+  document.querySelectorAll(".more-btn").forEach(btn => {
+    btn.textContent = translations[lang].more_btn;
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
