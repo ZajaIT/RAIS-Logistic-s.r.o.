@@ -1260,16 +1260,19 @@ nav ul li:last-child {
 </div>
 
     <form class="contact-form" action="https://formspree.io/f/mbdpgawo" method="POST" accept-charset="UTF-8" onsubmit="handleSubmit(event)">
-  <input type="text" name="name" placeholder="Jméno / Firma" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <input type="tel" name="phone" placeholder="Telefon">
-  <textarea name="message" placeholder="Vaše poptávka" rows="5" required></textarea>
+  <input type="text" name="name" data-key="form_name" placeholder="Jméno / Firma" required>
+
+<input type="email" name="email" data-key="form_email" placeholder="Email" required>
+
+<input type="tel" name="phone" data-key="form_phone" placeholder="Telefon">
+
+<textarea name="message" data-key="form_message" placeholder="Vaše poptávka" rows="5" required></textarea>
 
   <input type="hidden" name="_subject" value="Nová poptávka z webu">
       <input type="hidden" name="_cc" value="info@zajait.cz, klient@email.cz">
 
-  <button type="submit">Odeslat poptávku</button>
-      <div id="form-message" style="display:none; margin-top:5px; color:#B32766; font-weight:600; text-align:center;">
+  <button type="submit" data-key="form_btn">Odeslat poptávku</button>
+      <div id="form-message" data-key="form_success" style="display:none; margin-top:5px; color:#B32766; font-weight:600; text-align:center;">
   Vaše zpráva byla odeslána. Děkujeme!
 </div>
 </form>
