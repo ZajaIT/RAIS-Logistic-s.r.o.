@@ -557,6 +557,34 @@ nav .logo {
     #logistika {
   scroll-margin-top: 10px;
 }
+    /* ===== GALERIE ===== */
+
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 60px 0;
+}
+
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* mobil */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .gallery img {
+    height: 140px;
+  }
+}
   </style>
 </head>
 
@@ -1024,6 +1052,37 @@ nav .logo {
   </ul>
 </section>
 
+<div class="gallery">
+  <img src="foto1.jpg">
+  <img src="foto2.jpg">
+  <img src="foto3.jpg">
+  <img src="foto4.jpg">
+  <img src="foto5.jpg">
+  <img src="foto6.jpg">
+  <img src="foto7.jpg">
+  <img src="foto8.jpg">
+  <img src="foto9.jpg">
+  <img src="foto10.jpg">
+  <img src="foto11.jpg">
+  <img src="foto12.jpg">
+  <img src="foto13.jpg">
+  <img src="foto14.jpg">
+  <img src="foto15.jpg">
+  <img src="foto16.jpg">
+  <img src="foto17.jpg">
+  <img src="foto18.jpg">
+  <img src="foto19.jpg">
+  <img src="foto20.jpg">
+  <img src="foto21.jpg">
+  <img src="foto22.jpg">
+  <img src="foto23.jpg">
+  <img src="foto24.jpg">
+  <img src="foto25.jpg">
+  <img src="foto26.jpg">
+  <img src="foto27.jpg">
+  <img src="foto28.jpg">
+</div>
+  
 <section id="kontakt" class="section">
   <h1>
   <svg viewBox="0 0 24 24">
