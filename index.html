@@ -1023,54 +1023,58 @@ nav .logo {
 </section>
 
 <section id="technologie" class="section">
-  <h1>
-  <svg viewBox="0 0 24 24">
-    <rect x="4" y="4" width="16" height="16" rx="2"/>
-    <path d="M9 9h6v6H9z"/>
-  </svg>
-  Technologie
-</h1>
+  <h1 data-key="tech_title">
+    <svg viewBox="0 0 24 24">
+      <rect x="4" y="4" width="16" height="16" rx="2"/>
+      <path d="M9 9h6v6H9z"/>
+    </svg>
+    Technologie
+  </h1>
 
-  <p>
+  <p data-key="tech_p1">
     Dodáváme průmyslové a technologické produkty určené pro automatizaci, řízení výroby a moderní IT infrastrukturu.
   </p>
 
-  <p>
+  <p data-key="tech_p2">
     Zaměřujeme se na řešení, která podporují efektivitu, spolehlivost a digitalizaci výrobních i technologických procesů.
   </p>
 
-  <p>
+  <p data-key="tech_p3">
     Naše portfolio zahrnuje komponenty a zařízení vhodné pro náročné průmyslové prostředí, kde je klíčová stabilita, výkon a dlouhodobá spolehlivost.
   </p>
 
   <div class="tech-flex">
-  <div class="tech-text">
-    <h2>Oblasti využití:</h2>
-    <ul>
-      <li>automatizace výrobních procesů</li>
-      <li>řízení a optimalizace výroby</li>
-      <li>průmyslová elektronika a embedded řešení</li>
-      <li>AI a edge computing</li>
-      <li>IT infrastruktura a datová řešení</li>
-    </ul>
+    <div class="tech-text">
+      <h2 data-key="tech_usage_title">Oblasti využití:</h2>
+      <ul>
+        <li data-key="tech_use_1">automatizace výrobních procesů</li>
+        <li data-key="tech_use_2">řízení a optimalizace výroby</li>
+        <li data-key="tech_use_3">průmyslová elektronika a embedded řešení</li>
+        <li data-key="tech_use_4">AI a edge computing</li>
+        <li data-key="tech_use_5">IT infrastruktura a datová řešení</li>
+      </ul>
+    </div>
+
+    <div class="tech-image">
+      <img src="server.png" alt="">
+    </div>
   </div>
 
-  <div class="tech-image">
-    <img src="server.png" alt="">
-  </div>
-</div>
-
-  <p>
+  <p data-key="tech_p4">
     Spolupracujeme s ověřenými výrobci a dodavateli, což nám umožňuje dodávat kvalitní a technicky spolehlivá řešení.
   </p>
 
-  <p>
+  <p data-key="tech_p5">
     Zajišťujeme nejen dodávku produktů, ale i sourcing vhodných řešení dle konkrétních potřeb klienta.
   </p>
-  
+
   <p style="margin-top: 30px;">
-  <strong><a href="technologie.html">Kompletní portfolio technologických produktů zde →</a></strong>
-</p>
+    <strong>
+      <a href="technologie.html" data-key="tech_link">
+        Kompletní portfolio technologických produktů zde →
+      </a>
+    </strong>
+  </p>
 </section>
 
 <section id="logistika" class="section">
@@ -1531,6 +1535,25 @@ product_5_title: "Pšeničná mouka",
 product_5_text: "Dodáváme pšeničnou mouku v různých typech dle požadavků zákazníka a způsobu využití.",
 
 more_btn: "Zjistit více ↓",
+
+    tech_title: "Technologie",
+
+tech_p1: "Dodáváme průmyslové a technologické produkty určené pro automatizaci, řízení výroby a moderní IT infrastrukturu.",
+tech_p2: "Zaměřujeme se na řešení, která podporují efektivitu, spolehlivost a digitalizaci výrobních i technologických procesů.",
+tech_p3: "Naše portfolio zahrnuje komponenty a zařízení vhodné pro náročné průmyslové prostředí, kde je klíčová stabilita, výkon a dlouhodobá spolehlivost.",
+
+tech_usage_title: "Oblasti využití:",
+
+tech_use_1: "automatizace výrobních procesů",
+tech_use_2: "řízení a optimalizace výroby",
+tech_use_3: "průmyslová elektronika a embedded řešení",
+tech_use_4: "AI a edge computing",
+tech_use_5: "IT infrastruktura a datová řešení",
+
+tech_p4: "Spolupracujeme s ověřenými výrobci a dodavateli, což nám umožňuje dodávat kvalitní a technicky spolehlivá řešení.",
+tech_p5: "Zajišťujeme nejen dodávku produktů, ale i sourcing vhodných řešení dle konkrétních potřeb klienta.",
+
+tech_link: "Kompletní portfolio technologických produktů zde →",
   },
 
   en: {
@@ -1585,6 +1608,25 @@ product_5_title: "Wheat Flour",
 product_5_text: "We supply wheat flour in various types depending on customer requirements and application.",
 
 more_btn: "Find out more ↓",
+
+    tech_title: "Technology",
+
+tech_p1: "We supply industrial and technology products designed for automation, production control, and modern IT infrastructure.",
+tech_p2: "Our focus is on solutions that support efficiency, reliability, and the digital transformation of industrial and technological processes.",
+tech_p3: "Our portfolio includes components and systems suitable for demanding industrial environments where performance, stability, and long-term reliability are essential.",
+
+tech_usage_title: "Application Areas:",
+
+tech_use_1: "automation of production processes",
+tech_use_2: "production control and optimization",
+tech_use_3: "industrial electronics and embedded solutions",
+tech_use_4: "AI and edge computing",
+tech_use_5: "IT infrastructure and data solutions",
+
+tech_p4: "We cooperate with verified manufacturers and suppliers, allowing us to deliver high-quality and technically reliable solutions.",
+tech_p5: "In addition to supplying products, we also support clients with sourcing suitable solutions based on their specific requirements.",
+
+tech_link: "Full portfolio of technological products here →",
   }
 };
     function setLanguage(lang) {
