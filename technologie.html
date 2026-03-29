@@ -1382,13 +1382,16 @@ buttons.forEach(button => {
       if (el !== content) el.style.display = "none";
     });
 
-    document.querySelectorAll(".more-btn").forEach(btn => {
-      if (btn !== this) btn.textContent = "Zjistit více ↓";
-    });
+    const currentLang = localStorage.getItem("lang") || "cz";
+
+document.querySelectorAll(".more-btn").forEach(btn => {
+  if (btn !== this) btn.textContent = translations[currentLang].more_btn;
+});
 
     if (content.style.display === "block") {
       content.style.display = "none";
-      this.textContent = "Zjistit více ↓";
+      const currentLang = localStorage.getItem("lang") || "cz";
+this.textContent = translations[currentLang].more_btn;
     } else {
       content.style.display = "block";
       this.textContent = "Zavřít ↑";
@@ -1609,6 +1612,8 @@ lightbox.addEventListener("touchend", function (e) {
     menu_tech: "Technologie",
     menu_logistics: "Logistika",
     menu_contact: "Kontakt",
+
+    more_btn: "Zjistit více ↓"
   },
   en: {
     menu_home: "Home",
@@ -1617,6 +1622,8 @@ lightbox.addEventListener("touchend", function (e) {
     menu_tech: "Technology",
     menu_logistics: "Logistics",
     menu_contact: "Contact",
+
+    more_btn: "Find out more ↓"
   }
 };
 
