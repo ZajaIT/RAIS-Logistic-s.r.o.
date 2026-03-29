@@ -1299,7 +1299,8 @@ window.addEventListener("load", function () {
       this.textContent = "Zjistit více ↓";
     } else {
       content.style.display = "block";
-      this.textContent = "Zavřít ↑";
+      const currentLang = localStorage.getItem("lang") || "cz";
+this.textContent = currentLang === "cz" ? "Zavřít ↑" : "Close ↑";
     }
   });
 });
