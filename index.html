@@ -815,23 +815,8 @@ nav .logo {
 
     <p class="more-btn" data-key="more_btn">Zjistit více ↓</p>
 
-    <div class="more-content" data-key="product_1_more"></div>
-      <!-- NECH BEZ ZMĚNY -->
-  <p>
-  Dodáváme kmín převážně z produkce Evropské unie (Česká republika, Polsko, Litva, Finsko), balený dle požadavků zákazníka.
-</p>
-
-  <p><strong>Hlavní vlastnosti:</strong></p>
-  <ul>
-    <li>výrazná, typická vůně a chuť</li>
-    <li>vysoký obsah esenciálních olejů</li>
-    <li>vysoká čistota (čištěné a tříděné)</li>
-    <li>jednotná velikost zrn</li>
-    <li>stabilní kvalita napříč dodávkami</li>
-    <li>vhodný pro potravinářské využití (food grade)</li>
-    <li>dobrá skladovatelnost při správných podmínkách</li>
-    <li>dostupnost v různých kvalitativních třídách</li>
-  </ul>
+<div class="more-content" data-key="product_1_more"></div>
+     
 
   <p><strong>Využití:</strong></p>
   <ul>
@@ -1296,9 +1281,13 @@ btn.textContent = translations[currentLang].more_btn;
 
     // toggle aktuálního
     if (content.style.display === "block") {
-      content.style.display = "none";
-      this.textContent = "Zjistit více ↓";
-    } else {
+  content.style.display = "none";
+
+  const currentLang = localStorage.getItem("lang") || "cz";
+  this.textContent = translations[currentLang].more_btn;
+}
+    
+    else {
       content.style.display = "block";
       const currentLang = localStorage.getItem("lang") || "cz";
 this.textContent = currentLang === "cz" ? "Zavřít ↑" : "Close ↑";
