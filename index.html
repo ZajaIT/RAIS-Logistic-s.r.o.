@@ -956,20 +956,7 @@ nav .logo {
   }
 }
 
-  // uloží scroll jen při odchodu (reload / refresh)
-  window.addEventListener("beforeunload", function () {
-    sessionStorage.setItem("scrollPosition", window.scrollY);
-  });
-
-  // po reloadu vrátí zpět (jen pokud existuje)
-  window.addEventListener("load", function () {
-    const scrollPosition = sessionStorage.getItem("scrollPosition");
-    if (scrollPosition !== null) {
-      window.scrollTo(0, parseInt(scrollPosition));
-    }
-  });
-
-const buttons = document.querySelectorAll(".more-btn");
+ const buttons = document.querySelectorAll(".more-btn");
 
   buttons.forEach(button => {
   button.addEventListener("click", function () {
