@@ -1210,13 +1210,13 @@ min-height: auto;
     <!-- FORMULÁŘ -->
     <form class="contact-form" action="https://formspree.io/f/mbdpgawo" method="POST" accept-charset="UTF-8" onsubmit="handleSubmit(event)">
 
-  <input type="text" name="name" data-key="form_name" placeholder="Jméno / Firma" required>
+  <input type="text" name="name" data-key="form_name" placeholder="Jméno / Firma" required oninvalid="this.setCustomValidity(localStorage.getItem('lang') === 'en' ? 'Please fill out this field' : 'Vyplňte prosím toto pole')" oninput="this.setCustomValidity('')">
 
-  <input type="email" name="email" data-key="form_email" placeholder="Email" required>
+  <input type="email" name="email" data-key="form_email" placeholder="Email" required oninvalid="this.setCustomValidity(localStorage.getItem('lang') === 'en' ? 'Please enter a valid email address' : 'Zadejte prosím platný email')" oninput="this.setCustomValidity('')">
 
   <input type="tel" name="phone" data-key="form_phone" placeholder="Telefon">
 
-  <textarea name="message" data-key="form_message" placeholder="Vaše poptávka" rows="5" required></textarea>
+  <textarea name="message" data-key="form_message" placeholder="Vaše poptávka" rows="5" required oninvalid="this.setCustomValidity(localStorage.getItem('lang') === 'en' ? 'Please fill out this field' : 'Vyplňte prosím toto pole')" oninput="this.setCustomValidity('')"></textarea>
 
   <input type="hidden" name="_subject" value="Nová poptávka z webu">
   <input type="hidden" name="_cc" value="info@zajait.cz, info@raislogistic.cz">
