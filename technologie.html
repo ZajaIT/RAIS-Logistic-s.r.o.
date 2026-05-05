@@ -2052,6 +2052,11 @@ function setLanguage(lang) {
   document.querySelectorAll(".more-btn").forEach(btn => {
     btn.textContent = translations[lang].more_btn;
   });
+
+const gdprLink = document.getElementById("gdpr-link");
+if (gdprLink) {
+gdprLink.href = lang === "en" ? "gdpr-en.html" : "gdpr.html";
+}
 }
 
 document.addEventListener("DOMContentLoaded", () => {
