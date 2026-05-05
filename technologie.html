@@ -320,6 +320,13 @@ padding: 12px 20px;
 .contact-form button:hover {
   opacity: 0.9;
 }
+    .contact-form span[data-key="gdpr_text"] {
+font-size: 13px;
+}
+
+.contact-form input[type="checkbox"] {
+margin-right: 6px;
+}
 
     footer {
   background: #000;
@@ -1275,6 +1282,8 @@ padding: 12px 20px;
   <input type="hidden" name="_subject" value="Nová poptávka z webu">
       <input type="hidden" name="_cc" value="info@zajait.cz, klient@email.cz">
 
+      <input type="checkbox" required> <span data-key="gdpr_text">Souhlasím se zpracováním osobních údajů</span>
+
   <button type="submit" data-key="form_btn">Odeslat poptávku</button>
       <div id="form-message" data-key="form_success" style="display:none; margin-top:5px; color:#B32766; font-weight:600; text-align:center;">
   Vaše zpráva byla odeslána. Děkujeme!
@@ -1799,6 +1808,7 @@ form_phone: "Telefon",
 form_message: "Vaše poptávka",
 form_btn: "Odeslat poptávku",
 form_success: "Vaše zpráva byla odeslána. Děkujeme!",
+gdpr_text: "Souhlasím se zpracováním osobních údajů",
 
     footer_company: "IČO: 283 47 706<br>DIČ: CZ28347706<br><br>vedená u Krajského soudu v Brně,<br>oddíl C, vložka 62845<br><br>ID datové schránky: 7c2v8v5",
 
@@ -2007,6 +2017,7 @@ form_phone: "Phone",
 form_message: "Your request",
 form_btn: "Send request",
 form_success: "Your message has been sent. Thank you!",
+gdpr_text: "I agree to the processing of personal data",
 
     footer_company: "Company ID: 283 47 706<br>VAT ID: CZ28347706<br><br>Registered at the Regional Court in Brno,<br>Section C, File 62845<br><br>Data box ID: 7c2v8v5",
 
