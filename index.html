@@ -439,6 +439,14 @@ nav .logo {
   opacity: 0.9;
 }
 
+    .contact-form span[data-key="gdpr_text"] {
+font-size: 13px;
+}
+
+.contact-form input[type="checkbox"] {
+margin-right: 6px;
+}
+
 /* ===== FOOTER ===== */
 
 .footer {
@@ -1221,6 +1229,8 @@ min-height: auto;
   <input type="hidden" name="_subject" value="Nová poptávka z webu">
   <input type="hidden" name="_cc" value="info@zajait.cz, info@raislogistic.cz">
 
+  <input type="checkbox" required> <span data-key="gdpr_text">Souhlasím se zpracováním osobních údajů</span>
+
   <button type="submit" data-key="form_btn">Odeslat poptávku</button>
 
   <div id="form-message" data-key="form_success" style="display:none; margin-top:5px; color:#B32766; font-weight:600; text-align:center;">
@@ -1612,6 +1622,7 @@ form_phone: "Telefon",
 form_message: "Vaše poptávka",
 form_btn: "Odeslat poptávku",
 form_success: "Vaše zpráva byla odeslána. Děkujeme!",
+gdpr_text: "Souhlasím se zpracováním osobních údajů",
 
     intro_p1: "Propojujeme zákazníky s ověřenými dodavateli napříč různými odvětvími – od zemědělských komodit až po průmyslové technologie.",
 intro_p2: "Díky spolupráci s námi získáte jednoho silného partnera, který zastřeší celý proces – od výběru dodavatele až po finální dodání zboží.",
@@ -1812,6 +1823,7 @@ form_phone: "Phone",
 form_message: "Your inquiry",
 form_btn: "Send request",
 form_success: "Your message has been sent. Thank you!",
+gdpr_text: "I agree to the processing of personal data",
 
     intro_p1: "We connect clients with verified suppliers across multiple industries – from agricultural commodities to industrial technologies.",
 intro_p2: "By working with us, you gain one strong partner who manages the entire process – from supplier selection to final delivery.",
