@@ -50,11 +50,19 @@ html {
     }
 
     nav .logo {
-      color: #fff;
-      font-weight: bold;
-      font-size: 18px;
-      width: 150px;
-    }
+width: 150px;
+height: 40px;
+display: flex;
+align-items: center;
+}
+
+    nav .logo img {
+max-width: 150px;
+max-height: 40px;
+width: auto;
+height: auto;
+display: block;
+}
 
     nav ul {
       list-style: none;
@@ -150,7 +158,8 @@ nav ul li:last-child {
 }
 
 nav .logo {
-  width: auto;
+width: 150px;
+height: 40px;
 }
      
       html, body {
@@ -697,7 +706,7 @@ min-height: auto;
   <!-- NAVBAR -->
   <header>
     <nav>
-      <div class="logo"></div>
+      <div class="logo"><img src="logo.png" alt="RAIS Logistic"></div>
 
      <div class="menu-toggle" onclick="toggleMenu()">
   <span class="arrow"></span> MENU
